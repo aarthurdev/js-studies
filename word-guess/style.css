@@ -50,6 +50,10 @@ main{
     font-weight: bold;
 }
 
+.top-game-status{
+    text-align: center;
+}
+
 .invisible{
     display: none;
 }
@@ -110,5 +114,9 @@ main{
 }
 
 .correct-letter{
-    background-color: rgb(0, 202, 0);
+    background-color: #00b400;
+}
+
+.missed-letter{
+    background-color: #c40000;
 }
