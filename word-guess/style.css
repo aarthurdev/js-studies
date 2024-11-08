@@ -21,6 +21,14 @@ main{
     background-color: #c2ab8d;
 }
 
+button{
+    padding: 5px 10px 5px 10px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
 .main-menu{
     height: 100%;
     display: flex;
@@ -33,6 +41,14 @@ main{
     font: normal 700 48px 'Poppins';
 }
 
+.game-instructions{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
 .game-main{
     display: flex;
     justify-content: center;
@@ -42,11 +58,11 @@ main{
     margin: 30px 0 0 0;
 }
 
-.game-tries, .tries-count{
+.game-lives, .lives-count{
     font-size: 40px;
 }
 
-.tries-count{
+.lives-count{
     font-weight: bold;
 }
 
