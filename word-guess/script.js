@@ -9,7 +9,7 @@ const words = [
   },
   {
     title: "WORCESTERSHIRE",
-    hint: "Both a sauce and a county in England."
+    hint: "Both a sauce and a county in England shares this name."
   },
   {
     title: "WINDOWS",
@@ -58,11 +58,11 @@ const timeLeft = document.querySelector(".seconds");
 const letterContainer = document.querySelector(".letter-container");
 const keyboardLayout = document.querySelector(".keyboard-layout");
 const gameStatus = document.querySelector(".game-status");
-const triesCount = document.querySelector(".tries-count");
+const livesCount = document.querySelector(".lives-count");
 
 // Game status
-let randomWord = 3 /*Math.floor(Math.random() * words.length)*/;
-let tries = 4;
+let randomWord = Math.floor(Math.random() * words.length);
+let lives = 4;
 let gameEnded = false;
 let score = 0;
 
@@ -114,27 +114,25 @@ function renderKeyboard(letters) {
 
 function checkTry(randomWord, letterKey) {
   const allLetters = document.querySelectorAll(".letter-word");
-  const invisibleLetters = document.querySelectorAll(".invisible-letter");
+  let letterCount = document.querySelectorAll(".invisible-letter").length;
 
-  if (randomWord.title.includes(letterKey) && !gameEnded && tries >= 1) {
+  if (randomWord.title.includes(letterKey) && !gameEnded) {
     allLetters.forEach((elm, ind) => {
       if (elm.classList.contains("invisible-letter") && randomWord.title.at(ind) == letterKey) {
         elm.innerText = letterKey;
         elm.classList.remove("invisible-letter");
+        letterCount--;
       }
-    });
+    })
 
-    return;
-  }
-
-  if (invisibleLetters.length <= 1 && tries >= 1) {
-    gameWin(randomWord);
-  }
-
-  tries--;
-  triesCount.innerText = tries;
-
-  if (tries <= 0) {
+    if(letterCount == 0 && lives >= 1){
+      gameWin();
+    }
+  return;
+}
+  lives--
+  livesCount.innerText = lives;
+  if(lives == 0){
     gameOver(randomWord);
   }
 }
@@ -170,6 +168,7 @@ function gameWin() {
   });
 
   gameStatus.innerText = "You won!";
+  score++;
   gameEnded = true;
   lockKeyboard();
 }
@@ -181,7 +180,7 @@ function lockKeyboard() {
 }
 
 function startTimer(){
-    let seconds = 10;
+    let seconds = 40;
 
     const timer = setInterval(() => {
 
@@ -210,7 +209,7 @@ returnMenuButton.addEventListener("click", () => {
 
 startButton.addEventListener("click", () => {
   changeMenu(mainMenu, gameMain);
-  triesCount.innerText = tries;
+  livesCount.innerText = lives;
   renderWord(words);
   renderKeyboard(keyboard_letters);
   gameEnded = false;
