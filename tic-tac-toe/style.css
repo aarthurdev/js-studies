@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html, body, main{
+    height: 100%;
+}
+
+main{
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1{
+    margin-bottom: 20px;
+    font: normal 900 48px "Roboto", sans-serif;
+}
+
+.game-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: black;
+}
+
+.square-space{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    width: 150px;
+    height: 150px;
+    margin: 2px;
+}
+
+.played{
+    font: normal 900 100px "Roboto", sans-serif;
+}
