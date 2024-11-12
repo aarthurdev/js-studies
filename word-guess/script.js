@@ -73,7 +73,6 @@ function changeMenu(element1, element2) {
 }
 
 function renderWord(words) {
-  //wordTitle.innerText = words[0].title;
   wordHint.innerText = words[randomWord].hint;
   for (const _letter of words[randomWord].title) {
     const letterKey = `<span class="letter-word invisible-letter"></span>`;
@@ -104,8 +103,10 @@ function renderKeyboard(letters) {
     elm.addEventListener(
       "click",
       (e) => {
-        checkTry(words[randomWord], e.target.innerText);
-        e.target.classList.add("tried");
+        if(!gameEnded){
+          checkTry(words[randomWord], e.target.innerText);
+          e.target.classList.add("tried");
+        }
       },
       { once: true }
     )
@@ -116,7 +117,7 @@ function checkTry(randomWord, letterKey) {
   const allLetters = document.querySelectorAll(".letter-word");
   let letterCount = document.querySelectorAll(".invisible-letter").length;
 
-  if (randomWord.title.includes(letterKey) && !gameEnded) {
+  if (randomWord.title.includes(letterKey)) {
     allLetters.forEach((elm, ind) => {
       if (elm.classList.contains("invisible-letter") && randomWord.title.at(ind) == letterKey) {
         elm.innerText = letterKey;
