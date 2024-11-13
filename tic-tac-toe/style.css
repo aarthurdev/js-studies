@@ -41,3 +41,7 @@ h1{
 .played{
     font: normal 900 100px "Roboto", sans-serif;
 }
+
+.invisible{
+    display: none;
+}
