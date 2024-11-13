@@ -13,7 +13,7 @@ class Game{
             if(this.checkWin(this.player)){
                 document.querySelector(".game-ended").classList.remove("invisible")
                 document.querySelector(".player").innerText = this.player + 1;
-                return
+                return;
             }
 
             if(!this.checkWin(this.player)){
@@ -21,6 +21,7 @@ class Game{
                 if(this.tries == 9){
                     document.querySelector(".game-ended").classList.remove("invisible")
                     document.querySelector(".game-ended").innerText = "It's a draw!";
+                    return;
                 }
             }
 
@@ -54,7 +55,16 @@ class Game{
     }
 
     static restartGame(){
-        
+        const squares = document.querySelectorAll(".square-space");
+        document.querySelector(".game-ended").classList.add("invisible");
+
+        squares.forEach(elm => {
+            elm.innerText = ""
+        })
+
+        this.player = 0;
+        this.tries = 0;
+        console.log(this.tries)
     }
 
 }
@@ -65,3 +75,7 @@ document.querySelectorAll(".square-space").forEach((elm, ind) => {
         Game.addCharacter(ind, Game.player);
     })
 }) 
+
+document.querySelector(".restart-game").addEventListener('click', () => {
+    Game.restartGame();
+})
