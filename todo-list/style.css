@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html, body, main{
+    height: 100%;
+}
+
+main{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container{
+    display: flex;
+    justify-content: center;
+    background-color: blanchedalmond;
+    height: 60%;
+    width: 40%;
+}
+
+.todo-task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    height: 60px;
+    width: 90%;
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+
+button{
+    width: 55px;
+    height: 35px;
+    margin: 10px;
+}
