@@ -12,7 +12,7 @@ class Game{
 
             if(this.checkWin(this.player)){
                 document.querySelector(".game-ended").classList.remove("invisible")
-                document.querySelector(".player").innerText = this.player + 1;
+                document.querySelector(".game-ended").innerText = `Player ${this.player + 1} wins!`;
                 return;
             }
 
