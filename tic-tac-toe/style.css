@@ -53,3 +53,7 @@ h1{
     background-color: aquamarine;
     border-style: solid;
 }
+
+.restart-game:hover{
+    cursor: pointer;
+}
