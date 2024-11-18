@@ -2,17 +2,19 @@ class Game{
     static player = 0;
     static #characters = ["X", "O"];
     static tries = 0
+    static ended = false;
     
     static addCharacter(square, player){
         const squares = document.querySelectorAll(".square-space");
 
-        if(squares[square].innerText == ""){
+        if(squares[square].innerText == "" && !this.ended){
             const htmlPlayer = `<span class="played">${this.#characters[player]}</span>`;
             squares[square].insertAdjacentHTML("beforeend", htmlPlayer);
 
             if(this.checkWin(this.player)){
                 document.querySelector(".game-ended").classList.remove("invisible")
                 document.querySelector(".game-ended").innerText = `Player ${this.player + 1} wins!`;
+                this.ended = true;
                 return;
             }
 
@@ -78,4 +80,5 @@ document.querySelectorAll(".square-space").forEach((elm, ind) => {
 
 document.querySelector(".restart-game").addEventListener('click', () => {
     Game.restartGame();
+    Game.ended = false;
 })
